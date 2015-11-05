@@ -31,8 +31,8 @@ for (var i = 0; i < cat.cats.length; i++) {
 // Display Cat on click on cat name
 var catName = document.getElementsByTagName('li');
 var catPicArea = document.getElementById('cat-show');
-
-
+var i;
+/*
 var catArea = [ function() {
   catPicArea.innerHTML = '<img src="' + cat.cats[0].imgSrc + '">';
 },
@@ -42,11 +42,17 @@ function() {
 function() {
   catPicArea.innerHTML = '<img src="' + cat.cats[2].imgSrc + '">';
 }
-];
+];*/
+
+
 
 for( var i=0; i < catName.length; i++) {
 
-catName[i].addEventListener('click', catArea[i], false);
+  catName[i].addEventListener('click', function(){
+    for( var j=0; j < catName.length; j++) {
+      catPicArea.innerHTML = '<img src="' + cat.cats[j].imgSrc + '">';
+    }
+  }, false);
 
 }
 
