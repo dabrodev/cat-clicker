@@ -13,47 +13,33 @@ var cat = {
     {
       name: "Lucia",
       imgSrc: "img/cat3.jpg"
+    },
+    {
+      name: "Eddie",
+      imgSrc: "img/cat4.jpg"
     }
   ]
 };
 
-// Cat  - List Names
+// Cat  - List cat names and display cat picture on click
 var catList = document.getElementById('cat-list');
 var catElem;
+var catPicArea = document.getElementById('cat-show');
 
 for (var i = 0; i < cat.cats.length; i++) {
+    var catNew = cat.cats[i].name;
     catElem = document.createElement("li");
-    catList.appendChild(catElem);
     catElem.className = "cat" + (i+1);
-    catElem.innerHTML = cat.cats[i].name;
-}
 
-// Display Cat on click on cat name
-var catName = document.getElementsByTagName('li');
-var catPicArea = document.getElementById('cat-show');
-var i;
-/*
-var catArea = [ function() {
-  catPicArea.innerHTML = '<img src="' + cat.cats[0].imgSrc + '">';
-},
-function() {
-  catPicArea.innerHTML = '<img src="' + cat.cats[1].imgSrc + '">';
-},
-function() {
-  catPicArea.innerHTML = '<img src="' + cat.cats[2].imgSrc + '">';
-}
-];*/
+    catElem.innerHTML = catNew;
+    var catPic = cat.cats[i].imgSrc;
+    catElem.addEventListener('click', (function(param) {
+      return function() {
+        catPicArea.innerHTML = '<img src="' + param + '">';
+      };
+    })(catPic));
 
-
-
-for( var i=0; i < catName.length; i++) {
-
-  catName[i].addEventListener('click', function(){
-    for( var j=0; j < catName.length; j++) {
-      catPicArea.innerHTML = '<img src="' + cat.cats[j].imgSrc + '">';
-    }
-  }, false);
-
+    catList.appendChild(catElem);
 }
 
 // Counter
