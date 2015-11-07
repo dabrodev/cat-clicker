@@ -26,6 +26,7 @@ var catList = document.getElementById('cat-list');
 var catElem;
 var catPicArea = document.getElementById('cat-show');
 
+
 for (var i = 0; i < cat.cats.length; i++) {
     var catNew = cat.cats[i].name;
     catElem = document.createElement("li");
@@ -33,9 +34,12 @@ for (var i = 0; i < cat.cats.length; i++) {
 
     catElem.innerHTML = catNew;
     var catPic = cat.cats[i].imgSrc;
+
     catElem.addEventListener('click', (function(param) {
       return function() {
-        catPicArea.innerHTML = '<img src="' + param + '">';
+        counter = 0;
+        counterArea.innerHTML = counter;
+        catPicArea.innerHTML = '<img src=' + param + ' class="cat-pic">';
       };
     })(catPic));
 
@@ -43,16 +47,17 @@ for (var i = 0; i < cat.cats.length; i++) {
 }
 
 // Counter
-/*
-var elem = document.getElementById('cat-pic');
+
+var elem = document.createElement("div");
+console.log(elem);
 var counterArea = document.createElement("span");
-counterArea.innerHTML = 0;
-document.getElementById("log").appendChild(counterArea);
+
+
 var counter = 0;
 
-elem.addEventListener('click', function(){
+catPicArea.addEventListener('click', function() {
   counter += 1;
   counterArea.innerHTML = counter;
-  document.getElementById("log").appendChild(counterArea);
 }, false);
-*/
+
+document.body.appendChild(counterArea);
